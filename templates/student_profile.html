@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Student profile{% endblock title %}
+{% block content %}
+<section>
+  {% comment %}
+  <h1 class="text-center">{{student.first_name|title}}</h1>
+  {% endcomment %}
+  <table class="table">
+    <thead class="table table-success">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Enrollement Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="table-danger" scope="row">{{student.id}}</th>
+        <td class="table-danger">{{student.first_name}}</td>
+        <td class="table-danger">{{student.last_name}}</td>
+        <td class="table-danger">{{student.enrollement_date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+{% endblock content %}

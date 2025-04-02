@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}student dashboard{% endblock title %}
+{% block content %}
+<h1>Student dashboard</h1>
+<section>
+  <a href="{% url 'add-student' %}" class="btn btn-primary" style="float: right">Create</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr no</th>
+        <th scope="col">Student Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Enrollement Date</th>
+        <th scope="col">View</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.id}}</td>
+        <td>{{student.first_name}}</td>
+        <td>{{student.last_name}}</td>
+        <td>{{student.enrollement_date}}</td>
+        <td>
+          <a
+            href="{% url 'student-profile' id=student.id %}"
+            class="btn btn-primary"
+            >View</a
+          >
+        </td>
+        <td><a href="" class="btn btn-warning">Update</a></td>
+        <td>
+          <a
+            href="{% url 'delete-student' id=student.id %}"
+            class="btn btn-danger"
+            >Delete</a
+          >
+        </td>
+      </tr>
+
+      {% empty %}
+
+      <h1>No students found</h1>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock content %}
