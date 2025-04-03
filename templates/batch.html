@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Batch Dashboard{% endblock title %}
+{% block content %}
+<h1>Batch</h1>
+<section>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr No</th>
+        <th scope="col">Batch start date</th>
+        <th scope="col">Batch end date</th>
+        <th scope="col">Batch start time</th>
+        <th scope="col">Batch end time</th>
+        <th scope="col">Trainer</th>
+        <th scope="col">View</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for batch in batches %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ batch.batch_start_date }}</td>
+        <td>{{ batch.batch_end_date }}</td>
+        <td>{{ batch.batch_start_time }}</td>
+        <td>{{ batch.batch_end_time }}</td>
+        <td>{{ batch.trainer.name }}</td>
+        <td><a href="#" class="btn btn-primary">View</a></td>
+        <td><a href="#" class="btn btn-warning">Update</a></td>
+        <td><a href="#" class="btn btn-danger">Delete</a></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="9" style="text-align: center">No batch found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock content %}

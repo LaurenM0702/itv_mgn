@@ -44,3 +44,23 @@ def delete_student(req,id):
 
 def add_student(req):
     return render(req,'add_student.html')
+
+def add_student(req):
+    if req.method == 'POST':
+        fname = req.POST['fname']
+        lname = req.POST['lname']
+        email = req.POST['email']
+        contact = req.POST['phone']
+        dob = req.POST['dob']
+        qualification = req.POST['qualification']
+        gender = req.POST['gender']
+
+        # print(fname,lname,email,contact,dob,qualification,gender)
+        learner = Learners.objects.create(first_name=fname,last_name=lname,email=email,phone=contact,dob=dob,qualification=qualification,gender=gender)
+        learner.save()
+        return redirect('student-dashboard')
+
+
+    else:
+        print('This is a get method')
+    return render(req,'add_student.html')

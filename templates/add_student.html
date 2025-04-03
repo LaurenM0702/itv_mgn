@@ -2,10 +2,11 @@
 {% block content %}
 <section>
   <div class="container container-fluid">
-    <div class="row">
+    <div class="row bg-body-secondary p-4 shadow">
       <div class="col">
         <h3>Add students</h3>
         <form action="" method="post">
+          {% csrf_token %}
           <div class="form-group">
             <label for="inputName">First Name</label>
             <input
@@ -14,6 +15,7 @@
               class="form-control"
               id="inputName"
               placeholder="Firts name "
+              required
             />
           </div>
           <div class="form-group">
@@ -24,6 +26,7 @@
               name="lname"
               id="formGroupExampleInput2"
               placeholder="Another input"
+              required
             />
           </div>
           <div class="form-group">
@@ -33,6 +36,7 @@
               class="form-control"
               name="email"
               placeholder="Email"
+              required
             />
           </div>
           <div class="form-group">
@@ -40,16 +44,17 @@
             <input
               type="number"
               class="form-control"
-              name="contact"
+              name="phone"
               placeholder="contact"
+              required
             />
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Dob</label>
-            <input type="date" class="form-control" name="dob" />
+            <input type="date" class="form-control" name="dob" required />
           </div>
           <div class="form-group">
-            <label for="formGroupExampleInput2">Dob</label>
+            <label for="formGroupExampleInput2">Qualification</label>
             <select name="qualification" id="">
               <option value="ssc">SSC</option>
               <option value="hsc">HSC</option>
@@ -57,6 +62,40 @@
               <option value="graduate">Graduate</option>
               <option value="post_graduate">Post Graduate</option>
             </select>
+          </div>
+
+          <div class="my-2">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="male"
+              value="male"
+              required
+            />
+            <label class="form-check-label" for="male">Male</label>
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="female"
+              value="male"
+              required
+            />
+            <label class="form-check-label" for="female">Female</label>
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="others"
+              value="others"
+              required
+            />
+            <label class="form-check-label" for="others">Others</label>
+          </div>
+
+          <div class="row">
+            <input type="submit" value="Submit" class="btn btn-primary" />
           </div>
         </form>
       </div>
