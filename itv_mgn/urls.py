@@ -26,5 +26,6 @@ urlpatterns = [
     path('batch/',views.batch,name = 'batch'),
     path('student-profile/<int:id>/',views.student_profile,name= 'student-profile'),
     path('delete-student/<int:id>',views.delete_student,name= 'delete-student'),
-    path('add-student/',views.add_student,name='add-student')
+    path('add-student/',views.add_student,name='add-student'),
+    path('add-employee/',views.add_employee,name='add-employee')
 ]

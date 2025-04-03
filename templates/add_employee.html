@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% block title %}employee dashboard{% endblock title %}
+{% block content %}
+<section>
+  <div class="container container-fluid">
+    <div class="row bg-body-secondary p-4 shadow">
+      <div class="col">
+        <h3>Add employees</h3>
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="id">Employee Id</label>
+            <input
+              type="text"
+              name="id"
+              class="form-control"
+              id="id"
+              placeholder="Employee Id "
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Employee Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="name"
+              placeholder="Employee Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Employee Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Employee Email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact</label>
+            <input
+              type="number"
+              class="form-control"
+              name="contact"
+              id="contact"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="dob">Dob</label>
+            <input type="date" class="form-control" name="dob" id="dob" required />
+          </div>
+          <div class="form-group">
+            <label for="department">Department</label>
+            <select name="department" id="department">
+              <option value="">Select Department</option>
+              {% for department in departments %}
+                <option value="{{department.id}}">{{department.department_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select name="role" id="role">
+                <option value="">Select Role</option>
+                <option value="trainer">Trainer</option>
+                <option value="coordinator">Coordinator</option>
+                <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="my-2">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="male"
+              value="male"
+              required
+            />
+            <label class="form-check-label" for="male">Male</label>
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="female"
+              value="male"
+              required
+            />
+            <label class="form-check-label" for="female">Female</label>
+            <input
+              type="radio"
+              class="form-check-input"
+              name="gender"
+              id="others"
+              value="others"
+              required
+            />
+            <label class="form-check-label" for="others">Others</label>
+          </div>
+          <div class="row">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

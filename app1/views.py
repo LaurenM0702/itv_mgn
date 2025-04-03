@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Learners
 from .models import Employee
 from .models import Batch
+from .models import Department
 
 # Create your views here.
 
@@ -60,7 +61,32 @@ def add_student(req):
         learner.save()
         return redirect('student-dashboard')
 
-
     else:
         print('This is a get method')
     return render(req,'add_student.html')
+
+def add_employee(req):
+    departments = Department.objects.all()
+    context = {
+        'departments':departments
+    }
+    if req.method == 'POST':
+        eid = req.POST['id']
+        name = req.POST['name']
+        email = req.POST['email']
+        contact = req.POST['contact']
+        dob = req.POST['dob']
+        department = req.POST['department']
+        role = req.POST['role']
+        gender = req.POST['gender']
+        
+        department_object = Department.objects.get(id=department)
+
+        # print(fname,lname,email,contact,dob,qualification,gender)
+        employee = Employee.objects.create(employee_id=eid,employee_name=name,employee_email=email,employee_phone=contact,dob=dob,department=department,role=role,gender=gender)
+        employee.save()
+        return redirect('employee-dashboard')
+
+    else:
+        print('This is a get method')
+    return render(req,'add_employee.html',context)

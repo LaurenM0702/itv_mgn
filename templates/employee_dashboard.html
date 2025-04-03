@@ -2,6 +2,7 @@
 {% block content %}
 <h1>Employee dashboard</h1>
 <section>
+  <a href="{% url 'add-employee' %}" class="btn btn-primary" style="float: right">Add Employee</a>
   <table class="table">
     <thead>
       <tr>
@@ -9,8 +10,7 @@
         <th scope="col">Employee Id</th>
         <th scope="col">Employee Name</th>
         <th scope="col">Email Id</th>
-        <th scope="col">Department</th>
-        <th scope="col">Role</th>
+        <th scope="col">Joinig Date</th>
         <th scope="col">View</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
@@ -23,8 +23,7 @@
         <td>{{ employee.employee_id }}</td>
         <td>{{ employee.employee_name }}</td>
         <td>{{ employee.employee_email }}</td>
-        <td>{{ employee.department.department_name }}</td>
-        <td>{{ employee.get_role_display }}</td>
+        <td>{{ employee.joining_date }}</td>
         <td><a href="#" class="btn btn-primary">View</a></td>
         <td><a href="#" class="btn btn-warning">Update</a></td>
         <td><a href="#" class="btn btn-danger">Delete</a></td>
